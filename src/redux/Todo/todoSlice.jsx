@@ -8,7 +8,23 @@ const initialState = {
 const todoSlice = createSlice({
   name: 'todoList',
   initialState,
-  reducers: {},
+  reducers: {
+    addTodo: (todo) => {
+      return todo;
+    },
+    setTodo: (state, action) => {
+      state.todoList = [...todoList, action.payload];
+    },
+    deleteTodo: (id) => {
+      return id;
+    },
+    setDeleteTodo: (state, action) => {
+      state.todoList.filter((item) => item.id !== action.payload);
+    },
+    setClearAll: (state) => {
+      state.todoList = [];
+    },
+  },
 });
 
 export default todoSlice.reducer;
