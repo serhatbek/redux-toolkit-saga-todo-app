@@ -1,11 +1,10 @@
-import Button from '../Button/Button';
+import { Button, Input } from '../../components';
 import { IoMdAddCircle } from 'react-icons/io';
-import Input from '../Input/Input';
 import './AddTodoItem.scss';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
-import { addTodo } from '../../redux/Todo/actions';
+import { addTodo } from '../../redux/Todo/todoSlice';
 
 const AddTodoItem = () => {
   const [inputValue, setInputValue] = useState('');

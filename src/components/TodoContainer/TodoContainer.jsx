@@ -1,11 +1,10 @@
+import { AddTodoItem, TodoFooter, TodoItem } from '../../components';
 import './TodoContainer.scss';
-import AddTodoItem from '../AddTodoItem/AddTodoItem';
-import TodoItem from '../todoItem/todoItem';
 import { useSelector } from 'react-redux';
-import TodoFooter from '../TodoFooter/TodoFooter';
 
 const TodoContainer = () => {
-  const { todoList } = useSelector((state) => state.allTodoItems);
+  const { todoList } = useSelector((state) => state.todoStore);
+  console.log(todoList);
 
   return (
     <div className='todo-container container flex flex--col flex--align flex--justify'>

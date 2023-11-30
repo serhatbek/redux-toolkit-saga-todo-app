@@ -6,25 +6,37 @@ const initialState = {
 };
 
 const todoSlice = createSlice({
-  name: 'todoList',
+  name: 'todoStore',
   initialState,
   reducers: {
     addTodo: (todo) => {
       return todo;
     },
-    setTodo: (state, action) => {
-      state.todoList = [...todoList, action.payload];
+    setAddTodo: (state, action) => {
+      state.todoList = [...state.todoList, action.payload];
+      storeDataInLocalStorage(state.todoList);
     },
     deleteTodo: (id) => {
       return id;
     },
     setDeleteTodo: (state, action) => {
       state.todoList.filter((item) => item.id !== action.payload);
+      storeDataInLocalStorage(state.todoList);
     },
+    clearAll: () => {},
     setClearAll: (state) => {
       state.todoList = [];
+      storeDataInLocalStorage([]);
     },
   },
 });
 
+export const {
+  addTodo,
+  setAddTodo,
+  deleteTodo,
+  setDeleteTodo,
+  clearAll,
+  setClearAll,
+} = todoSlice.actions;
 export default todoSlice.reducer;
