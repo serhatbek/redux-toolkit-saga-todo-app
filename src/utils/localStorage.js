@@ -1,5 +1,3 @@
 export const storeDataInLocalStorage = (todoList) => {
-  localStorage.setItem('todoList', JSON.stringify(todoList));
+  localStorage.setItem('todoList', todoList);
 };
-
-export const storedTodoData = localStorage.getItem('todoList');
