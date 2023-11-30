@@ -12,19 +12,21 @@ import {
 
 function* onAddTodoAsync(action) {
   yield put(setAddTodo(action.payload));
-  storeDataInLocalStorage(action.payload);
+  const storedData = JSON.parse(localStorage.getItem('todoList'));
+  const updatedData = [...storedData, action.payload];
+  localStorage.setItem('todoList', JSON.stringify(updatedData));
 }
 
 function* onDeleteTodoAsync(action) {
   yield put(setDeleteTodo(action.payload));
-  const storedData = JSON.parse(localStorage.getItem('todoList')) || [];
+  const storedData = JSON.parse(localStorage.getItem('todoList'));
   const updatedData = storedData.filter((item) => item.id !== action.payload);
   localStorage.setItem('todoList', JSON.stringify(updatedData));
 }
 
 function* onClearAllAsync() {
   yield put(setClearAll());
-  //   localStorage.removeItem('todoList');
+  localStorage.removeItem('todoList');
   storeDataInLocalStorage([]);
 }
 

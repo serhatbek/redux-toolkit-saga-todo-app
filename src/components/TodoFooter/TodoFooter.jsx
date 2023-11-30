@@ -2,14 +2,14 @@ import { useSelector } from 'react-redux';
 import { Button } from '../../components';
 import './TodoFooter.scss';
 import { useDispatch } from 'react-redux';
-// import { deleteAll } from '../../redux/Todo/actions';
+import { clearAll } from '../../redux/Todo/todoSlice';
 
 const TodoFooter = () => {
   const { todoList } = useSelector((state) => state.todoStore);
   const dispatch = useDispatch();
 
   const handleClearAll = () => {
-    // dispatch(deleteAll());
+    dispatch(clearAll());
   };
 
   return (

@@ -20,7 +20,9 @@ const todoSlice = createSlice({
       return id;
     },
     setDeleteTodo: (state, action) => {
-      state.todoList.filter((item) => item.id !== action.payload);
+      state.todoList = state.todoList.filter(
+        (item) => item.id !== action.payload
+      );
       storeDataInLocalStorage(state.todoList);
     },
     clearAll: () => {},

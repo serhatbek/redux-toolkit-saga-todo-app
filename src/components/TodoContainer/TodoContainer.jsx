@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 const TodoContainer = () => {
   const { todoList } = useSelector((state) => state.todoStore);
-  console.log(todoList);
 
   return (
     <div className='todo-container container flex flex--col flex--align flex--justify'>
