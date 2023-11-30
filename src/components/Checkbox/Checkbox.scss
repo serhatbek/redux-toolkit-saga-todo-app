@@ -1,0 +1,36 @@
+@import '../../assets/css/settings/colors';
+
+.ant-checkbox-wrapper {
+  color: $text;
+  margin-left: 10px;
+  align-items: center;
+
+  .ant-checkbox-inner {
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+
+    &::after {
+      left: 27.5%;
+    }
+  }
+
+  .ant-checkbox:hover::after,
+  .ant-checkbox-wrapper:hover .ant-checkbox::after {
+    visibility: hidden;
+  }
+
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: $purple;
+    border-color: $purple-light;
+  }
+
+  .ant-checkbox + span {
+    margin-top: 6px;
+  }
+
+  .ant-checkbox-checked + span {
+    color: $text-2;
+    text-decoration: line-through;
+  }
+}

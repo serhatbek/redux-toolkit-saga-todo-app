@@ -1,0 +1,46 @@
+@import '../../assets/css/settings/colors';
+
+.ant-btn {
+  $self: &;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  height: 40px;
+  background-color: $purple;
+  color: $text;
+  border: 1px solid $purple-light;
+
+  @media screen and (max-width: 460px) {
+    padding: 5px;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $purple-light;
+    color: $white;
+  }
+
+  &.ant-btn--left-icon,
+  &.ant-btn--right-icon {
+    svg {
+      font-size: 20px;
+    }
+  }
+
+  &.ant-btn--left-icon {
+    svg {
+      margin-right: 5px;
+    }
+  }
+
+  &.ant-btn--right-icon {
+    svg {
+      margin-left: 5px;
+    }
+  }
+
+  > span {
+    margin-top: 2px;
+  }
+}

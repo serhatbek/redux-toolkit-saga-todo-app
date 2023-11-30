@@ -1,0 +1,14 @@
+@import '../../assets/css/settings/colors';
+
+.todo-item {
+  width: 100%;
+  background-color: $gray;
+  justify-content: space-between;
+  align-items: center;
+
+  &__actions {
+    .ant-btn svg {
+      margin-right: 0;
+    }
+  }
+}

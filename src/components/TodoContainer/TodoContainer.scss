@@ -1,0 +1,30 @@
+@import '../../assets/css/settings/colors';
+
+.todo-container {
+  padding: 0 10px;
+  h2 {
+    color: $text;
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin: 40px 0 20px 0;
+
+    @media screen and (max-width: 460px) {
+      margin: 20px 0;
+    }
+  }
+
+  .box {
+    margin: 25px 0;
+
+    .todo-item:not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+    .empty {
+      color: $text;
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+}
