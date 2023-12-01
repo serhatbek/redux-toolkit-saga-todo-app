@@ -1,8 +1,8 @@
 # Tasks App
 
-I've completed a todo task management application to practice and strengthen my skills in frontend development and state management with redux-saga.
+I've completed a todo task management application to practice and strengthen my skills in frontend development and state management with redux-toolkit and redux-saga.
 
-You can check the live demo [here](https://serhatbek.github.io/saga-todo-app/).
+You can check the live demo [here](https://serhatbek.github.io/redux-toolkit-saga-todo-app/).
 
 ## Usage
 

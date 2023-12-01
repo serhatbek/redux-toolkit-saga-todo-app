@@ -1,5 +1,4 @@
 import { put, takeLatest, fork } from 'redux-saga/effects';
-import { storeDataInLocalStorage } from '../../utils/localStorage';
 
 import {
   addTodo,
@@ -14,30 +13,18 @@ import {
 
 function* onAddTodoAsync(action) {
   yield put(setAddTodo(action.payload));
-  //   const storedData = JSON.parse(localStorage.getItem('todoList'));
-  //   const updatedData = [...storedData, action.payload];
-  //   localStorage.setItem('todoList', JSON.stringify(updatedData));
 }
 
 function* onEditTodoAsync(action) {
   yield put(setEditTodo(action.payload));
-  //   const storedData = JSON.parse(localStorage.getItem('todoList'));
-  //   const updatedData = storedData.map((item) =>
-  //     item.id === action.payload.id ? action.payload : item
-  //   );
-  //   localStorage.setItem('todoList', JSON.stringify(updatedData));
 }
 
 function* onDeleteTodoAsync(action) {
   yield put(setDeleteTodo(action.payload));
-  //   const storedData = JSON.parse(localStorage.getItem('todoList'));
-  //   const updatedData = storedData.filter((item) => item.id !== action.payload);
-  //   localStorage.setItem('todoList', JSON.stringify(updatedData));
 }
 
 function* onClearAllAsync() {
   yield put(setClearAll());
-  //   storeDataInLocalStorage([]);
 }
 
 function* watchAddTodo() {
