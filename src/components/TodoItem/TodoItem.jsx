@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { Button, Checkbox, Input } from '../../components';
 import { RiDeleteBin6Fill, RiEditBoxFill, RiEdit2Fill } from 'react-icons/ri';
-import { deleteTodo } from '../../redux/Todo/todoSlice';
+import { deleteTodo, editTodo } from '../../redux/Todo/todoSlice';
 
 const TodoItem = ({ todo, todoClass }) => {
   const { text, id } = todo;
@@ -15,7 +15,7 @@ const TodoItem = ({ todo, todoClass }) => {
     dispatch(deleteTodo(id));
   };
 
-  const handleEdit = (e) => {
+  const handleEdit = () => {
     setName(text);
     if (edit) {
       dispatch(

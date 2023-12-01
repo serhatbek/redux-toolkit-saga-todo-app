@@ -25,6 +25,15 @@ const todoSlice = createSlice({
       );
       storeDataInLocalStorage(state.todoList);
     },
+    editTodo: (todo) => {
+      return todo;
+    },
+    setEditTodo: (state, action) => {
+      state.todoList = state.todoList.map((item) =>
+        item.id === action.payload.id ? action.payload : item
+      );
+      storeDataInLocalStorage(state.todoList);
+    },
     clearAll: () => {},
     setClearAll: (state) => {
       state.todoList = [];
@@ -38,6 +47,8 @@ export const {
   setAddTodo,
   deleteTodo,
   setDeleteTodo,
+  editTodo,
+  setEditTodo,
   clearAll,
   setClearAll,
 } = todoSlice.actions;

@@ -12,6 +12,7 @@ const TodoContainer = () => {
       <div className='box background'>
         {todoList?.length > 0 ? (
           todoList?.map((todo) => {
+            console.log(todo);
             return <TodoItem key={todo.id} todoClass='flex' todo={todo} />;
           })
         ) : (
