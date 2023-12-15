@@ -1,6 +1,6 @@
+import './AddTodoItem.scss';
 import { Button, Input } from '../../components';
 import { IoMdAddCircle } from 'react-icons/io';
-import './AddTodoItem.scss';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
