@@ -12,6 +12,7 @@ const Button = ({ btnAction, iconLeft, iconRight, type, ...props }) => {
         'ant-btn--right-icon': iconRight,
       })}
       type={type === 'submit' ? 'submit' : 'button'}
+      {...props}
     >
       {iconLeft ? iconLeft : null}
       {props.children}
