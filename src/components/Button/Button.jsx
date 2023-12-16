@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Button as ButtonAntd } from 'antd';
 
-const Button = ({ btnAction, iconLeft, iconRight, ...props }) => {
+const Button = ({ btnAction, iconLeft, iconRight, type, ...props }) => {
   return (
     <ButtonAntd
       onClick={btnAction}
@@ -11,6 +11,7 @@ const Button = ({ btnAction, iconLeft, iconRight, ...props }) => {
         'ant-btn--left-icon': iconLeft,
         'ant-btn--right-icon': iconRight,
       })}
+      type={type === 'submit' ? 'submit' : 'button'}
     >
       {iconLeft ? iconLeft : null}
       {props.children}
