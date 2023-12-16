@@ -10,6 +10,8 @@ const SelectButton = ({ options }) => {
 
   return (
     <Select
+      popupClassName='ant-select-btn__list'
+      className='ant-select-btn'
       defaultValue='All'
       onChange={handleChange}
       options={options}
