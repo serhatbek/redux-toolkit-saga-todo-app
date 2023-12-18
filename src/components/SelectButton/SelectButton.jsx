@@ -1,12 +1,17 @@
 import { Select } from 'antd';
 import './SelectButton.scss';
+import { useEffect, useState } from 'react';
 // import Select from 'react-select';
 Select;
 
 const SelectButton = ({ options }) => {
+  const [selectValue, setSelectValue] = useState('All');
+
   const handleChange = (value) => {
-    console.log(`selected ${value}`);
+    setSelectValue((prev) => (prev = value));
   };
+
+  useEffect(() => {}, [selectValue]);
 
   return (
     <Select

@@ -20,6 +20,7 @@ const AddTodoItem = () => {
         addTodo({
           id: nanoid(),
           text: inputValue,
+          checked: false,
         })
       );
     }

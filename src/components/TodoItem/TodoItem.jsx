@@ -3,12 +3,13 @@ import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { Button, Checkbox, Input } from '../../components';
 import { RiDeleteBin6Fill, RiEditBoxFill, RiEdit2Fill } from 'react-icons/ri';
-import { deleteTodo, editTodo } from '../../redux/Todo/todoSlice';
+import { checkedTodo, deleteTodo, editTodo } from '../../redux/Todo/todoSlice';
 
 const TodoItem = ({ todo, todoClass }) => {
   const { text, id } = todo;
   const [edit, setEdit] = useState(false);
   const [name, setName] = useState(text);
+  const [itemChecked, setItemChecked] = useState(true);
   const dispatch = useDispatch();
 
   const handleDelete = (id) => {
@@ -44,6 +45,19 @@ const TodoItem = ({ todo, todoClass }) => {
     }
   };
 
+  const handleItemChecked = (e) => {
+    setItemChecked(e.target.checked);
+    dispatch(
+      checkedTodo({
+        ...todo,
+        checked: itemChecked,
+      })
+    );
+    console.log(itemChecked);
+  };
+
+  // useEffect(() => {}, [itemChecked]);
+
   useEffect(() => {
     if (edit) {
       document.addEventListener('mousedown', handleClickOutside);
@@ -62,7 +76,7 @@ const TodoItem = ({ todo, todoClass }) => {
           onChange={handleChange}
         />
       ) : (
-        <Checkbox label={text} />
+        <Checkbox onChange={handleItemChecked} label={text} />
       )}
       <div className='todo-item__actions flex'>
         <Button

@@ -7,6 +7,8 @@ import {
   setDeleteTodo,
   editTodo,
   setEditTodo,
+  checkedTodo,
+  setCheckedTodo,
   clearAll,
   setClearAll,
 } from '../../redux/Todo/todoSlice';
@@ -17,6 +19,10 @@ function* onAddTodoAsync(action) {
 
 function* onEditTodoAsync(action) {
   yield put(setEditTodo(action.payload));
+}
+
+function* onCheckedTodoAsync(action) {
+  yield put(setCheckedTodo(action.payload));
 }
 
 function* onDeleteTodoAsync(action) {
@@ -35,6 +41,10 @@ function* watchEditTodo() {
   yield takeLatest(editTodo.type, onEditTodoAsync);
 }
 
+function* watchCheckedTodo() {
+  yield takeLatest(checkedTodo.type, onCheckedTodoAsync);
+}
+
 function* watchDeleteTodo() {
   yield takeLatest(deleteTodo.type, onDeleteTodoAsync);
 }
@@ -45,7 +55,8 @@ function* watchClearAll() {
 
 export const todoSagas = [
   fork(watchAddTodo),
+  fork(watchEditTodo),
+  fork(watchCheckedTodo),
   fork(watchDeleteTodo),
   fork(watchClearAll),
-  fork(watchEditTodo),
 ];
