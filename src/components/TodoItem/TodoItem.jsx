@@ -9,7 +9,7 @@ const TodoItem = ({ todo, todoClass }) => {
   const { text, id } = todo;
   const [edit, setEdit] = useState(false);
   const [name, setName] = useState(text);
-  const [itemChecked, setItemChecked] = useState(true);
+  const [itemChecked, setItemChecked] = useState(false);
   const dispatch = useDispatch();
 
   const handleDelete = (id) => {
@@ -46,17 +46,18 @@ const TodoItem = ({ todo, todoClass }) => {
   };
 
   const handleItemChecked = (e) => {
-    setItemChecked(e.target.checked);
+    setItemChecked((prev) => (prev = e.target.checked));
+    // console.log(itemChecked);
+  };
+
+  useEffect(() => {
     dispatch(
       checkedTodo({
         ...todo,
         checked: itemChecked,
       })
     );
-    console.log(itemChecked);
-  };
-
-  // useEffect(() => {}, [itemChecked]);
+  }, [itemChecked]);
 
   useEffect(() => {
     if (edit) {

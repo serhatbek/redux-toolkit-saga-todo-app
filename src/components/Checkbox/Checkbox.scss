@@ -15,6 +15,10 @@
     }
   }
 
+  .ant-checkbox-checked:not(.ant-checkbox-disabled):hover .ant-checkbox-inner {
+    background-color: $purple !important;
+  }
+
   .ant-checkbox:hover::after,
   .ant-checkbox-wrapper:hover .ant-checkbox::after {
     visibility: hidden;
