@@ -1,8 +1,7 @@
 import { Select } from 'antd';
 import './SelectButton.scss';
 import { useEffect, useState } from 'react';
-// import Select from 'react-select';
-Select;
+import PropTypes from 'prop-types';
 
 const SelectButton = ({ options }) => {
   const [selectValue, setSelectValue] = useState('All');
@@ -28,3 +27,7 @@ const SelectButton = ({ options }) => {
 };
 
 export default SelectButton;
+
+SelectButton.propTypes = {
+  options: PropTypes.any,
+};

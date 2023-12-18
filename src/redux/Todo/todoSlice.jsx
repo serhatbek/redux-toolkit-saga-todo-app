@@ -4,7 +4,7 @@ import { storeDataInLocalStorage } from '../../utils/localStorage';
 const initialState = {
   todoList: JSON.parse(localStorage.getItem('todoList')) || [],
 };
-console.log(initialState.todoList);
+
 const todoSlice = createSlice({
   name: 'todoStore',
   initialState,

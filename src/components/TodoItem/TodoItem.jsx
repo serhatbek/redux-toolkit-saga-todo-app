@@ -1,4 +1,5 @@
 import './TodoItem.scss';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { Button, Checkbox, Input } from '../../components';
@@ -47,7 +48,6 @@ const TodoItem = ({ todo, todoClass }) => {
 
   const handleItemChecked = (e) => {
     setItemChecked((prev) => (prev = e.target.checked));
-    // console.log(itemChecked);
   };
 
   useEffect(() => {
@@ -94,3 +94,12 @@ const TodoItem = ({ todo, todoClass }) => {
 };
 
 export default TodoItem;
+
+TodoItem.propTypes = {
+  todo: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    checked: PropTypes.bool.isRequired,
+  }),
+  todoClass: PropTypes.string,
+};
