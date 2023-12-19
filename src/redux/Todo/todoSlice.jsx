@@ -48,9 +48,14 @@ const todoSlice = createSlice({
       state.todoList = JSON.parse(localStorage.getItem('todoList'));
       storeDataInLocalStorage(state.todoList);
     },
-    getCheckedTodoList: () => {},
-    setCheckedTodoList: (state) => {
+    getCompletedTodoList: () => {},
+    setCompletedTodoList: (state) => {
       state.todoList = state.todoList.filter((item) => item.checked === true);
+      storeDataInLocalStorage(state.todoList);
+    },
+    getIncompleteTodoList: () => {},
+    setIncompleteTodoList: (state) => {
+      state.todoList = state.todoList.filter((item) => item.checked === false);
       storeDataInLocalStorage(state.todoList);
     },
     clearAll: () => {},
