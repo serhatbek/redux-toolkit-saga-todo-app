@@ -11,10 +11,6 @@ import {
   setCheckedTodo,
   getTodoList,
   setTodoList,
-  getCompletedTodoList,
-  setCompletedTodoList,
-  getIncompleteTodoList,
-  setIncompleteTodoList,
   clearAll,
   setClearAll,
   setFilterStatus,
@@ -35,14 +31,6 @@ function* onCheckedTodoAsync(action) {
 
 function* onGetTodoListAsync() {
   yield put(setTodoList());
-}
-
-function* onCompletedTodoListAsync() {
-  yield put(setCompletedTodoList());
-}
-
-function* onIncompleteTodoListAsync() {
-  yield put(setIncompleteTodoList());
 }
 
 function* onFilterStatusAsync(action) {
@@ -77,14 +65,6 @@ function* watchSetTodoList() {
   yield takeLatest(getTodoList.type, onGetTodoListAsync);
 }
 
-function* watchCompletedTodoList() {
-  yield takeLatest(getCompletedTodoList.type, onCompletedTodoListAsync);
-}
-
-function* watchIncompleteTodoList() {
-  yield takeLatest(getIncompleteTodoList.type, onIncompleteTodoListAsync);
-}
-
 function* watchDeleteTodo() {
   yield takeLatest(deleteTodo.type, onDeleteTodoAsync);
 }
@@ -98,8 +78,6 @@ export const todoSagas = [
   fork(watchAddTodo),
   fork(watchEditTodo),
   fork(watchCheckedTodo),
-  fork(watchCompletedTodoList),
-  fork(watchIncompleteTodoList),
   fork(watchFilterStatus),
   fork(watchDeleteTodo),
   fork(watchClearAll),

@@ -5,8 +5,30 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTodoList } from '../../redux/Todo/todoSlice';
 
 const TodoContainer = () => {
-  const { todoList } = useSelector((state) => state.todoStore);
+  const { todoList, filterStatus } = useSelector((state) => state.todoStore);
   const dispatch = useDispatch();
+
+  const listItems = () => {
+    let displayItems;
+    const allItemsList = todoList;
+    const checkedList = todoList.filter((item) => item.checked === true);
+    const unCheckedList = todoList.filter((item) => item.checked === false);
+
+    if (filterStatus === 'All') {
+      displayItems = allItemsList;
+    }
+
+    if (filterStatus === 'Completed') {
+      displayItems = checkedList;
+    }
+
+    if (filterStatus === 'Incomplete') {
+      displayItems = unCheckedList;
+    }
+    return displayItems;
+  };
+
+  const listItemsToShow = listItems();
 
   useEffect(() => {
     dispatch(getTodoList());
@@ -17,8 +39,8 @@ const TodoContainer = () => {
       <h2>Tasks List</h2>
       <AddTodoItem />
       <div className='box background'>
-        {todoList?.length > 0 ? (
-          todoList?.map((todo) => {
+        {listItemsToShow?.length > 0 ? (
+          listItemsToShow?.map((todo) => {
             return <TodoItem key={todo?.id} todoClass='flex' todo={todo} />;
           })
         ) : (

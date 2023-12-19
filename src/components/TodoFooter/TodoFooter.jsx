@@ -6,9 +6,8 @@ import { clearAll, getTodoList } from '../../redux/Todo/todoSlice';
 import { useEffect } from 'react';
 
 const TodoFooter = () => {
-  const { todoList, filterStatus } = useSelector((state) => state.todoStore);
+  const { todoList } = useSelector((state) => state.todoStore);
   const dispatch = useDispatch();
-  console.log(filterStatus);
 
   const handleClearAll = () => {
     dispatch(clearAll());

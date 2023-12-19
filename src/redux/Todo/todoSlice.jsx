@@ -3,8 +3,6 @@ import { storeDataInLocalStorage } from '../../utils/localStorage';
 
 const initialState = {
   todoList: JSON.parse(localStorage.getItem('todoList')) || [],
-  completedTodoList: [],
-  incompleteTodoList: [],
   filterStatus: 'All',
 };
 
@@ -48,31 +46,14 @@ const todoSlice = createSlice({
     },
     getTodoList: () => {},
     setTodoList: (state) => {
-      const allTodos = JSON.parse(localStorage.getItem('todoList'));
-      storeDataInLocalStorage(allTodos);
-      return { ...state, todoList: allTodos };
-    },
-    getCompletedTodoList: () => {},
-    setCompletedTodoList: (state) => {
-      const completedTodos = state.todoList.filter(
-        (item) => item.checked === true
-      );
-      storeDataInLocalStorage(completedTodos);
-      return { ...state, completedTodoList: completedTodos };
-    },
-    getIncompleteTodoList: () => {},
-    setIncompleteTodoList: (state) => {
-      const incompleteTodos = state.todoList.filter(
-        (item) => item.checked === false
-      );
-      storeDataInLocalStorage(incompleteTodos);
-      return { ...state, incompleteTodoList: incompleteTodos };
+      state.todoList = JSON.parse(localStorage.getItem('todoList'));
+      storeDataInLocalStorage(state.todoList);
     },
     getFilterStatus: (status) => {
       return status;
     },
     setFilterStatus: (state, action) => {
-      return { ...state, filterStatus: action.payload };
+      state.filterStatus = action.payload;
     },
     clearAll: () => {},
     setClearAll: (state) => {
@@ -91,10 +72,6 @@ export const {
   setEditTodo,
   checkedTodo,
   setCheckedTodo,
-  getCompletedTodoList,
-  setCompletedTodoList,
-  getIncompleteTodoList,
-  setIncompleteTodoList,
   clearAll,
   setClearAll,
   getTodoList,

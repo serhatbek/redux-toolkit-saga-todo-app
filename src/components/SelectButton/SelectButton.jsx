@@ -3,12 +3,7 @@ import './SelectButton.scss';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import {
-  getCompletedTodoList,
-  getFilterStatus,
-  getIncompleteTodoList,
-  getTodoList,
-} from '../../redux/Todo/todoSlice';
+import { getFilterStatus } from '../../redux/Todo/todoSlice';
 
 const SelectButton = ({ options, defaultVal, ...props }) => {
   const [selectValue, setSelectValue] = useState(defaultVal);
@@ -16,20 +11,6 @@ const SelectButton = ({ options, defaultVal, ...props }) => {
 
   const handleChange = (value) => {
     setSelectValue((prev) => (prev = value));
-
-    // console.log(selectValue);
-    //     if (selectValue == 'All') {
-    //       dispatch(getTodoList());
-    //     }
-
-    //     if (selectValue == 'Completed') {
-    //       dispatch(getCompletedTodoList());
-    //     }
-
-    //     if (selectValue == 'Incomplete') {
-    //       dispatch(getIncompleteTodoList());
-    //     }
-    //   };
   };
 
   useEffect(() => {
