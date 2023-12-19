@@ -3,25 +3,29 @@ import './SelectButton.scss';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-const SelectButton = ({ options }) => {
-  const [selectValue, setSelectValue] = useState('All');
+const SelectButton = ({ options, defaultVal, ...props }) => {
+  const [selectValue, setSelectValue] = useState(defaultVal);
+
+  console.log(selectValue);
 
   const handleChange = (value) => {
     setSelectValue((prev) => (prev = value));
   };
 
-  useEffect(() => {}, [selectValue]);
+  //   useEffect(() => {}, [selectValue]);
 
   return (
     <Select
       popupClassName='ant-select-btn__list'
       className='ant-select-btn'
-      defaultValue='All'
+      defaultValue={defaultVal}
+      value={selectValue}
       onChange={handleChange}
       options={options}
       style={{
         width: 120,
       }}
+      {...props}
     />
   );
 };

@@ -2,7 +2,8 @@ import { useSelector } from 'react-redux';
 import { Button, SelectButton } from '../../components';
 import './TodoFooter.scss';
 import { useDispatch } from 'react-redux';
-import { clearAll } from '../../redux/Todo/todoSlice';
+import { clearAll, getTodoList } from '../../redux/Todo/todoSlice';
+import { useEffect } from 'react';
 
 const TodoFooter = () => {
   const { todoList } = useSelector((state) => state.todoStore);
@@ -27,11 +28,15 @@ const TodoFooter = () => {
     },
   ];
 
+  useEffect(() => {
+    dispatch(getTodoList());
+  }, []);
+
   return (
     <div className='todo-footer flex flex--align background'>
       <p>{todoList?.length} items left</p>
       <Button btnAction={handleClearAll}>Clear All</Button>
-      <SelectButton options={selectOptions} />
+      <SelectButton options={selectOptions} defaultVal='All' />
     </div>
   );
 };

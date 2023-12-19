@@ -7,7 +7,7 @@ import { RiDeleteBin6Fill, RiEditBoxFill, RiEdit2Fill } from 'react-icons/ri';
 import { checkedTodo, deleteTodo, editTodo } from '../../redux/Todo/todoSlice';
 
 const TodoItem = ({ todo, todoClass }) => {
-  const { text, id } = todo;
+  const { text, id, checked } = todo;
   const [edit, setEdit] = useState(false);
   const [name, setName] = useState(text);
   const dispatch = useDispatch();
@@ -73,11 +73,7 @@ const TodoItem = ({ todo, todoClass }) => {
           onChange={handleChange}
         />
       ) : (
-        <Checkbox
-          onChange={handleItemChecked}
-          label={text}
-          checked={todo.checked}
-        />
+        <Checkbox onChange={handleItemChecked} label={text} checked={checked} />
       )}
       <div className='todo-item__actions flex'>
         <Button
