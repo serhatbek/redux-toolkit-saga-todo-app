@@ -17,6 +17,8 @@ import {
   setIncompleteTodoList,
   clearAll,
   setClearAll,
+  setFilterStatus,
+  getFilterStatus,
 } from '../../redux/Todo/todoSlice';
 
 function* onAddTodoAsync(action) {
@@ -35,12 +37,16 @@ function* onGetTodoListAsync() {
   yield put(setTodoList());
 }
 
-function* onGetCompletedTodoListAsync() {
+function* onCompletedTodoListAsync() {
   yield put(setCompletedTodoList());
 }
 
-function* onGetIncompleteTodoListAsync() {
+function* onIncompleteTodoListAsync() {
   yield put(setIncompleteTodoList());
+}
+
+function* onFilterStatusAsync(action) {
+  yield put(setFilterStatus(action.payload));
 }
 
 function* onDeleteTodoAsync(action) {
@@ -49,6 +55,10 @@ function* onDeleteTodoAsync(action) {
 
 function* onClearAllAsync() {
   yield put(setClearAll());
+}
+
+function* watchFilterStatus() {
+  yield takeLatest(getFilterStatus.type, onFilterStatusAsync);
 }
 
 function* watchAddTodo() {
@@ -68,11 +78,11 @@ function* watchSetTodoList() {
 }
 
 function* watchCompletedTodoList() {
-  yield takeLatest(getCompletedTodoList.type, onGetCompletedTodoListAsync);
+  yield takeLatest(getCompletedTodoList.type, onCompletedTodoListAsync);
 }
 
 function* watchIncompleteTodoList() {
-  yield takeLatest(getIncompleteTodoList.type, onGetIncompleteTodoListAsync);
+  yield takeLatest(getIncompleteTodoList.type, onIncompleteTodoListAsync);
 }
 
 function* watchDeleteTodo() {
@@ -90,6 +100,7 @@ export const todoSagas = [
   fork(watchCheckedTodo),
   fork(watchCompletedTodoList),
   fork(watchIncompleteTodoList),
+  fork(watchFilterStatus),
   fork(watchDeleteTodo),
   fork(watchClearAll),
 ];
