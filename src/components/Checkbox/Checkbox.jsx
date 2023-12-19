@@ -1,4 +1,5 @@
 import './Checkbox.scss';
+import PropTypes from 'prop-types';
 import { Checkbox as AntdCheckbox } from 'antd';
 
 const Checkbox = ({ label, ...props }) => {
@@ -6,3 +7,8 @@ const Checkbox = ({ label, ...props }) => {
 };
 
 export default Checkbox;
+
+Checkbox.propTypes = {
+  label: PropTypes.string,
+  props: PropTypes.any,
+};

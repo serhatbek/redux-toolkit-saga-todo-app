@@ -1,9 +1,16 @@
+import { useEffect } from 'react';
 import { AddTodoItem, TodoFooter, TodoItem } from '../../components';
 import './TodoContainer.scss';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTodoList } from '../../redux/Todo/todoSlice';
 
 const TodoContainer = () => {
   const { todoList } = useSelector((state) => state.todoStore);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTodoList());
+  }, []);
 
   return (
     <div className='todo-container container flex flex--col flex--align flex--justify'>

@@ -10,7 +10,6 @@ const TodoItem = ({ todo, todoClass }) => {
   const { text, id } = todo;
   const [edit, setEdit] = useState(false);
   const [name, setName] = useState(text);
-  const [itemChecked, setItemChecked] = useState(false);
   const dispatch = useDispatch();
 
   const handleDelete = (id) => {
@@ -47,17 +46,14 @@ const TodoItem = ({ todo, todoClass }) => {
   };
 
   const handleItemChecked = (e) => {
-    setItemChecked((prev) => (prev = e.target.checked));
-  };
-
-  useEffect(() => {
+    const isChecked = e.target.checked;
     dispatch(
       checkedTodo({
         ...todo,
-        checked: itemChecked,
+        checked: isChecked,
       })
     );
-  }, [itemChecked]);
+  };
 
   useEffect(() => {
     if (edit) {
@@ -77,7 +73,11 @@ const TodoItem = ({ todo, todoClass }) => {
           onChange={handleChange}
         />
       ) : (
-        <Checkbox onChange={handleItemChecked} label={text} />
+        <Checkbox
+          onChange={handleItemChecked}
+          label={text}
+          checked={todo.checked}
+        />
       )}
       <div className='todo-item__actions flex'>
         <Button

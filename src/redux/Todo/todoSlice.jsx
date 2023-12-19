@@ -43,6 +43,11 @@ const todoSlice = createSlice({
       );
       storeDataInLocalStorage(state.todoList);
     },
+    getTodoList: () => {},
+    setTodoList: (state) => {
+      state.todoList = JSON.parse(localStorage.getItem('todoList'));
+      storeDataInLocalStorage(state.todoList);
+    },
     clearAll: () => {},
     setClearAll: (state) => {
       state.todoList = [];
@@ -62,5 +67,7 @@ export const {
   setCheckedTodo,
   clearAll,
   setClearAll,
+  getTodoList,
+  setTodoList,
 } = todoSlice.actions;
 export default todoSlice.reducer;
