@@ -11,6 +11,10 @@ import {
   setCheckedTodo,
   getTodoList,
   setTodoList,
+  getCompletedTodoList,
+  setCompletedTodoList,
+  getIncompleteTodoList,
+  setIncompleteTodoList,
   clearAll,
   setClearAll,
 } from '../../redux/Todo/todoSlice';
@@ -29,6 +33,14 @@ function* onCheckedTodoAsync(action) {
 
 function* onGetTodoListAsync() {
   yield put(setTodoList());
+}
+
+function* onGetCompletedTodoListAsync() {
+  yield put(setCompletedTodoList());
+}
+
+function* onGetIncompleteTodoListAsync() {
+  yield put(setIncompleteTodoList());
 }
 
 function* onDeleteTodoAsync(action) {
@@ -55,6 +67,14 @@ function* watchSetTodoList() {
   yield takeLatest(getTodoList.type, onGetTodoListAsync);
 }
 
+function* watchCompletedTodoList() {
+  yield takeLatest(getCompletedTodoList.type, onGetCompletedTodoListAsync);
+}
+
+function* watchIncompleteTodoList() {
+  yield takeLatest(getIncompleteTodoList.type, onGetIncompleteTodoListAsync);
+}
+
 function* watchDeleteTodo() {
   yield takeLatest(deleteTodo.type, onDeleteTodoAsync);
 }
@@ -68,6 +88,8 @@ export const todoSagas = [
   fork(watchAddTodo),
   fork(watchEditTodo),
   fork(watchCheckedTodo),
+  fork(watchCompletedTodoList),
+  fork(watchIncompleteTodoList),
   fork(watchDeleteTodo),
   fork(watchClearAll),
 ];
