@@ -9,6 +9,11 @@
   justify-content: center;
   background-color: rgba($color: #282626, $alpha: 0.4);
   z-index: 22;
+  display: none;
+
+  &.visible {
+    display: flex;
+  }
 
   &__content {
     max-width: 500px;

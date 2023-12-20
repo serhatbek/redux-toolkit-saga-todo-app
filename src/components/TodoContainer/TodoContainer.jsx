@@ -13,6 +13,8 @@ const TodoContainer = () => {
   const { todoList, filterStatus } = useSelector((state) => state.todoStore);
   const dispatch = useDispatch();
 
+  const allItemsChecked = todoList.every((item) => item.checked === true);
+
   const listItems = () => {
     let displayItems;
     const allItemsList = todoList;
@@ -43,7 +45,6 @@ const TodoContainer = () => {
     <div className='todo-container container flex flex--col flex--align flex--justify'>
       <h2>Tasks List</h2>
       <AddTodoItem />
-      <CongratModal />
       <div className='box background'>
         {listItemsToShow?.length > 0 ? (
           listItemsToShow?.map((todo) => {
@@ -54,6 +55,7 @@ const TodoContainer = () => {
         )}
       </div>
       <TodoFooter />
+      {allItemsChecked && <CongratModal />}
     </div>
   );
 };
