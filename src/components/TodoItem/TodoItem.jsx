@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import { Button, Checkbox, Input } from '../../components';
 import { RiDeleteBin6Fill, RiEditBoxFill, RiEdit2Fill } from 'react-icons/ri';
 import { checkedTodo, deleteTodo, editTodo } from '../../redux/Todo/todoSlice';
+// import { getClasses } from '../../utils/getClasses';
+import classNames from 'classnames';
 
 const TodoItem = ({ todo, todoClass }) => {
   const { text, id, checked } = todo;
@@ -65,7 +67,10 @@ const TodoItem = ({ todo, todoClass }) => {
   }, [edit]);
 
   return (
-    <div className={`todo-item ${todoClass ? todoClass : ''}`}>
+    <div
+      className={classNames(['todo-item', todoClass || ''])}
+      // className={getClasses(['todo-item', todoClass])}
+    >
       {edit ? (
         <Input
           value={name}
