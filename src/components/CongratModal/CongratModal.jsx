@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 const CongratModal = () => {
   const [modalOpen, setModalOpen] = useState(true);
+
   const closeModal = () => {
     setModalOpen(false);
   };

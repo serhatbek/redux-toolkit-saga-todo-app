@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   AddTodoItem,
   CongratModal,
@@ -10,9 +10,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getTodoList } from '../../redux/Todo/todoSlice';
 
 const TodoContainer = () => {
+  const [showModal, setShowModal] = useState(false);
   const { todoList, filterStatus } = useSelector((state) => state.todoStore);
   const dispatch = useDispatch();
-
   const allItemsChecked = todoList.every((item) => item.checked === true);
 
   const listItems = () => {
@@ -41,6 +41,16 @@ const TodoContainer = () => {
     dispatch(getTodoList());
   }, []);
 
+  useEffect(() => {
+    if (allItemsChecked) {
+      setShowModal(true);
+      const timer = setTimeout(() => {
+        setShowModal(false);
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [allItemsChecked]);
+
   return (
     <div className='todo-container container flex flex--col flex--align flex--justify'>
       <h2>Tasks List</h2>
@@ -55,7 +65,7 @@ const TodoContainer = () => {
         )}
       </div>
       <TodoFooter />
-      {allItemsChecked && <CongratModal />}
+      {showModal && <CongratModal />}
     </div>
   );
 };
