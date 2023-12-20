@@ -1,5 +1,10 @@
 import { useEffect } from 'react';
-import { AddTodoItem, TodoFooter, TodoItem } from '../../components';
+import {
+  AddTodoItem,
+  CongratModal,
+  TodoFooter,
+  TodoItem,
+} from '../../components';
 import './TodoContainer.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTodoList } from '../../redux/Todo/todoSlice';
@@ -38,6 +43,7 @@ const TodoContainer = () => {
     <div className='todo-container container flex flex--col flex--align flex--justify'>
       <h2>Tasks List</h2>
       <AddTodoItem />
+      <CongratModal />
       <div className='box background'>
         {listItemsToShow?.length > 0 ? (
           listItemsToShow?.map((todo) => {

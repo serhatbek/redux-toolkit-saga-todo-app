@@ -1,0 +1,44 @@
+.congrat-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba($color: #282626, $alpha: 0.4);
+  z-index: 22;
+
+  &__content {
+    max-width: 500px;
+    width: 100%;
+    padding: 30px 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    margin: 0 15px;
+
+    figure {
+      max-width: 300px;
+      margin: 0 auto 20px auto;
+    }
+
+    > h3 {
+      text-align: center;
+      font-size: 32px;
+      color: #282626;
+      margin-bottom: 20px;
+    }
+
+    > p {
+      color: #534e4e;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    > button {
+      margin: 0 auto;
+      padding: 10px 50px;
+    }
+  }
+}

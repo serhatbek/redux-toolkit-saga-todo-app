@@ -8,3 +8,5 @@ export { default as Checkbox } from './Checkbox/Checkbox';
 export { default as FloatLabel } from './FloatLabel/FloatLabel';
 export { default as Input } from './Input/Input';
 export { default as SelectButton } from './SelectButton/SelectButton';
+
+export { default as CongratModal } from './CongratModal/CongratModal';
